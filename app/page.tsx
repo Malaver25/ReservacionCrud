@@ -1,10 +1,15 @@
+'use client';
+
+import LoginCuentas from './sistemaRegistro/loginCuentas';
 import Head from 'next/head';
 
-export default function Home() {
-  return (
-    // Espacio guardado para <Head> : Nero
-    <main>
-      
-    </main>
-  );
+export default function Page() {
+    return (
+        <>
+            <Head>
+                <title>Login Principal</title>
+            </Head>
+            <LoginCuentas />
+        </>
+    );
 }
