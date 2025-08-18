@@ -1,0 +1,35 @@
+/* Diseño para la pagina (sistemaFormulario) */
+
+.page-container {   /*  */
+    background-color: #f9f9f9;
+    padding: 20px;
+    border-radius: 10px;
+    color: rgb(0, 0, 0);    /*Color de Letras*/
+}
+
+.page-title {
+    font-size: 24px;
+    font-weight: bold;
+    color: darkblue;
+    margin-bottom: 15px;
+}
+
+.page-card {
+
+    padding: 9px;
+    border-radius: 8px;
+}
+
+.boton{    /*CSS PARA EL BOTON*/
+    color: rgb(255, 255, 255);  /*Color de las letras*/
+    font-weight: bold;           /* Negrita */    
+    background-color: #1e3a8a;/*Fondo del boton(Azul)*/
+    padding: 12px 20px;         /* Espaciado interno */
+    border-radius: 8px;         /* Bordes redondeados */
+}
+
+input{
+    color: black;
+    border: 2px solid #0a0a0a;    /* Borde gris */
+
+}
