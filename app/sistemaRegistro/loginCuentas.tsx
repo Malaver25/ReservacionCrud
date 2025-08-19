@@ -40,40 +40,42 @@ export default function loginCuentas(){
     };
 
     return (
-    <div className="flex flex-col gap-4 p-6 rounded-xl shadow-md bg-gray-100 max-w-sm mx-auto mt-20">
-      <div className="space-y-2">
-        <Label htmlFor="correoRegistro">Ingrese su correo</Label>
-        <Input
-          type="email"
-          id="correoRegistro"
-          value={correoRegistro}
-          onChange={(e) => setCorreoRegistro(e.target.value)}
-        />
-      </div>
+      <center>
+        <div className="flex flex-col gap-4 p-6 rounded-xl shadow-md bg-gray-100 max-w-sm mx-auto mt-20">
+          <div className="space-y-2">
+            <Label htmlFor="correoRegistro">Ingrese su correo</Label>
+            <Input
+              type="email"
+              id="correoRegistro"
+              value={correoRegistro}
+              onChange={(e) => setCorreoRegistro(e.target.value)}
+            />
+          </div>
 
-      <div className="space-y-2">
-        <Label htmlFor="contraseñaRegistro">Ingrese su contraseña</Label>
-        <Input
-          type="password"
-          id="contraseñaRegistro"
-          value={contraseñaRegistro}
-          onChange={(e) => setContraseñaRegistro(e.target.value)}
-        />
-      </div>
+          <div className="space-y-2">
+            <Label htmlFor="contraseñaRegistro">Ingrese su contraseña</Label>
+            <Input
+              type="password"
+              id="contraseñaRegistro"
+              value={contraseñaRegistro}
+              onChange={(e) => setContraseñaRegistro(e.target.value)}
+            />
+          </div>
 
-      <Button
-        type="button"
-        onClick={validarVaciosRegistro}
-        className="transition-transform hover:scale-110"
-      >
-        Ingresar
-      </Button>
+          <Button
+            type="button"
+            onClick={validarVaciosRegistro}
+            className="transition-transform hover:scale-110"
+          >
+            Ingresar
+          </Button>
 
-      {mensaje && (
-        <h3 className="text-center text-red-500 transition-transform hover:scale-125">
-          {mensaje}
-        </h3>
-      )}
-    </div>
+          {mensaje && (
+            <h3 className="text-center text-red-500 transition-transform hover:scale-125">
+              {mensaje}
+            </h3>
+          )}
+        </div>
+    </center>
   );
 }
