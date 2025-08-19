@@ -7,7 +7,7 @@ export default function indexPrincipal(){
     const router = useRouter();
     
     function redirigirButton(){
-        router.push("./")
+        router.push("./sistemaFormulario")
     };
 
     return(
