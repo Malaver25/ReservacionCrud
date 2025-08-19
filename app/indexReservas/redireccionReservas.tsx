@@ -6,7 +6,9 @@ export default function indexPrincipal(){
 
     const router = useRouter();
     
-    const validarButton = () => {}
+    function redirigirButton(){
+        router.push("./")
+    };
 
     return(
         <>
@@ -59,6 +61,7 @@ export default function indexPrincipal(){
                             <Button
                                 type="button"
                                 className="transition-transform hover:scale-110"
+                                onClick={redirigirButton}
                                 >
                                 <strong>¡RESERVE AHORA!</strong>
                             </Button>
