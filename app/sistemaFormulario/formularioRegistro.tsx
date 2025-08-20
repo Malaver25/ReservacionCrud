@@ -1,9 +1,7 @@
-// Logica interna (BACK-END)
-"use client";  //Codigo necesario para ejecucion en Next.js
+"use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
-// Estados que almacenan los datos ingresados por el usuario
 export function useFormularioRegistro() {
     const [nombre, setNombre] = useState("");
     const [documento, setDocumento] = useState("");
@@ -11,10 +9,34 @@ export function useFormularioRegistro() {
     const [habitacion, setHabitacion] = useState("simple");
     const [fechaEntrada, setFechaEntrada] = useState("");
     const [fechaSalida, setFechaSalida] = useState("");
+    const [precio, setPrecio] = useState(0);
+    const [total, setTotal] = useState(0);
 
-    // Función que simula el envío del formulario
+    useEffect(() => {
+        switch (habitacion) {
+            case "simple":
+                setPrecio(50);
+                break;
+            case "doble":
+                setPrecio(80);
+                break;
+            case "suite":
+                setPrecio(120);
+                break;
+            default:
+                setPrecio(0);
+        }
+    }, [habitacion]);
+
+    // Calcula total (solo 1 noche por ahora)
+    useEffect(() => {
+        if (precio > 0) {
+            setTotal(precio); // Puedes cambiar esto si agregas lógica por días
+        }
+    }, [precio]);
+
     const handleSubmit = (e: React.FormEvent) => {
-        e.preventDefault(); // Evita que la página se recargue
+        e.preventDefault();
 
         const datosReserva = {
             nombre,
@@ -23,12 +45,14 @@ export function useFormularioRegistro() {
             habitacion,
             fechaEntrada,
             fechaSalida,
+            precio,
+            total,
         };
-        // MENSAJE DEL BOTON
+
         console.log("📌 Reserva enviada:", datosReserva);
         alert("✅ Reserva registrada correctamente");
     };
-    // Retornamos las variables y funciones para que el FRONT las use
+
     return {
         nombre, setNombre,
         documento, setDocumento,
@@ -36,6 +60,8 @@ export function useFormularioRegistro() {
         habitacion, setHabitacion,
         fechaEntrada, setFechaEntrada,
         fechaSalida, setFechaSalida,
+        precio,
+        total,
         handleSubmit,
     };
 }

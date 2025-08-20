@@ -1,35 +1,87 @@
-/* Diseño para la pagina (sistemaFormulario) */
-
-.page-container {   /*  */
+/* Diseño general para la página del formulario */
+.page-container {
     background-color: #f9f9f9;
-    padding: 20px;
+    padding: 30px;
     border-radius: 10px;
-    color: rgb(0, 0, 0);    /*Color de Letras*/
+    color: #000;
+    max-width: 600px;
+    margin: auto;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    font-family: Arial, sans-serif;
 }
 
+/* Título principal */
 .page-title {
-    font-size: 24px;
+    font-size: 28px;
     font-weight: bold;
-    color: darkblue;
+    color: #1e3a8a;
+    margin-bottom: 25px;
+    text-align: center;
+}
+
+/* Estilo para cada campo del formulario */
+.page-card,
+.page-container form > div {
     margin-bottom: 15px;
+    display: flex;
+    flex-direction: column;
 }
 
-.page-card {
+/* Etiquetas */
+label {
+    font-weight: 600;
+    margin-bottom: 5px;
+}
 
-    padding: 9px;
+/* Campos de texto, fecha y select */
+input,
+select {
+    padding: 10px;
+    font-size: 15px;
+    border: 2px solid #ccc;
+    border-radius: 6px;
+    outline: none;
+    transition: border-color 0.3s;
+}
+
+input:focus,
+select:focus {
+    border-color: #1e3a8a;
+}
+
+/* Botón de enviar */
+.boton {
+    background-color: #1e3a8a;
+    color: #fff;
+    font-weight: bold;
+    padding: 12px 20px;
+    border: none;
     border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.3s;
 }
 
-.boton{    /*CSS PARA EL BOTON*/
-    color: rgb(255, 255, 255);  /*Color de las letras*/
-    font-weight: bold;           /* Negrita */    
-    background-color: #1e3a8a;/*Fondo del boton(Azul)*/
-    padding: 12px 20px;         /* Espaciado interno */
-    border-radius: 8px;         /* Bordes redondeados */
+.boton:hover {
+    background-color: #274fc0;
 }
 
-input{
-    color: black;
-    border: 2px solid #0a0a0a;    /* Borde gris */
+/* Boleta de reserva */
+.boleta-container {
+    background-color: #eef2ff;
+    border: 1px solid #c3d1ff;
+    padding: 20px;
+    margin-top: 30px;
+    border-radius: 10px;
+    box-shadow: 0 1px 5px rgba(0,0,0,0.1);
+}
 
+.boleta-container h2 {
+    margin-bottom: 15px;
+    color: #1e3a8a;
+    font-size: 22px;
+}
+
+.boleta-container p {
+    margin: 6px 0;
+    font-size: 16px;
 }
