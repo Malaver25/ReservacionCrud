@@ -2,6 +2,7 @@
 "use client"; //Codigo necesario para ejecucion en Next.js
 
 import { useFormularioRegistro } from "./formularioRegistro";
+import { useRouter } from "next/navigation"; // <-- nuevo hook para redirigir
 import "./page.css";   // Importacion solo para el Css formulario
 
 export default function Page() {
@@ -13,8 +14,20 @@ export default function Page() {
         habitacion, setHabitacion,
         fechaEntrada, setFechaEntrada,
         fechaSalida, setFechaSalida,
-        handleSubmit,
     } = useFormularioRegistro();
+
+    // Precios por tipo de habitación
+    const precios = { simple: 100, doble: 250, suite: 500 };
+
+    // Hook de navegación
+    const router = useRouter();
+
+    // Nuevo handleSubmit que registra y redirige
+    const handleSubmit = (e: React.FormEvent) => {
+        e.preventDefault(); // Evita que la página se recargue
+        alert("✅ Reserva registrada correctamente");
+        router.push("/indexReservas"); // <-- redirigimos después del alert
+    };
 
     return (
         <div className="page-container">
@@ -61,6 +74,10 @@ export default function Page() {
                         <option value="doble">Doble</option>
                         <option value="suite">Suite</option>
                     </select>
+                    {/* Cuadro que muestra el precio según el tipo de habitación */}
+                    <div className="price-box">
+                        Precio: S/ {precios[habitacion]}
+                    </div>
                 </div>
 
                 <div>

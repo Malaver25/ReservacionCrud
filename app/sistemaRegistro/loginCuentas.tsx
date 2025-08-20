@@ -1,12 +1,7 @@
 "use client";
 
-// TENDRE QUE MODIFICAR VARIAS COSAS UNA VEZ QUE LA DB ESTE CREADA (ARCHIVO.JSON)
-
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { useRouter } from "next/navigation";
-import { Button } from "@/components/ui/button";
-import { Input } from "@/components/ui/input";
-import { Label } from "@/components/ui/label";
 import usuarios from "@/data/usuarios.json";
 
 
@@ -33,49 +28,69 @@ export default function loginCuentas(){
         if (user) {
             setMensaje("Bienvenido");
             localStorage.setItem("isLoggedIn", "true");
-            router.push("./indexReservas");
+            router.push("/indexReservas");  // Cambiado a ruta absoluta
         } else {
             setMensaje("Correo o contraseña incorrecta");
+            console.log("Usuario no encontrado. Datos ingresados:", { correoRegistro, contraseñaRegistro });
+            console.log("Usuarios disponibles:", usuarios);
         }
     };
 
     return (
-      <center>
-        <div className="flex flex-col gap-4 p-6 rounded-xl shadow-md bg-gray-100 max-w-sm mx-auto mt-20">
-          <div className="space-y-2">
-            <Label htmlFor="correoRegistro">Ingrese su correo</Label>
-            <Input
-              type="email"
-              id="correoRegistro"
-              value={correoRegistro}
-              onChange={(e) => setCorreoRegistro(e.target.value)}
-            />
+      <div
+        className="min-h-screen flex items-center justify-center bg-cover bg-center bg-no-repeat"
+        style={{
+          backgroundImage: 'linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url(/images/fondo.jpg)',
+        }}
+      >
+        <div 
+          style={{ 
+            backgroundColor: '#FFFFFF',
+            position: 'absolute',
+            top: '50%',
+            left: '50%',
+            transform: 'translate(-50%, -50%)',
+            width: '500px',
+            height: '350px',
+            borderRadius: '30px'
+          }}
+        ></div>
+        <div className="relative z-10 w-[400px] space-y-20">
+          <h1 className="text-4xl text-center font-bold mb-20" style={{ color: '#000000' }}>Iniciar sesión</h1>
+          <div className="space-y-24 px-8 mt-16">
+            <div>
+              <div className="text-base mb-8" style={{ color: '#000000' }}>Introducir usuario:</div>
+              <input
+                type="email"
+                id="correoRegistro"
+                className="w-full p-4 border border-gray-300"
+                value={correoRegistro}
+                onChange={(e) => setCorreoRegistro(e.target.value)}
+              />
+            </div>
+            <div className="mt-16">
+              <div className="text-base mb-8" style={{ color: '#000000' }}>Introducir contraseña:</div>
+              <input
+                type="password"
+                id="contraseñaRegistro"
+                className="w-full p-4 border border-gray-300"
+                value={contraseñaRegistro}
+                onChange={(e) => setContraseñaRegistro(e.target.value)}
+              />
+            </div>
+            <button
+              onClick={validarVaciosRegistro}
+              className="w-full bg-black text-white p-4 mt-20"
+            >
+              Ingresar
+            </button>
+            {mensaje && (
+              <p className={`text-center mt-2 ${mensaje === "Bienvenido" ? "text-green-600" : "text-red-500"}`}>
+                {mensaje}
+              </p>
+            )}
           </div>
-
-          <div className="space-y-2">
-            <Label htmlFor="contraseñaRegistro">Ingrese su contraseña</Label>
-            <Input
-              type="password"
-              id="contraseñaRegistro"
-              value={contraseñaRegistro}
-              onChange={(e) => setContraseñaRegistro(e.target.value)}
-            />
-          </div>
-
-          <Button
-            type="button"
-            onClick={validarVaciosRegistro}
-            className="transition-transform hover:scale-110"
-          >
-            Ingresar
-          </Button>
-
-          {mensaje && (
-            <h3 className="text-center text-red-500 transition-transform hover:scale-125">
-              {mensaje}
-            </h3>
-          )}
         </div>
-    </center>
-  );
+      </div>
+    );
 }
